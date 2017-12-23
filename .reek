@@ -1,0 +1,12 @@
+DuplicateMethodCall:
+  enable: true
+FeatureEnvy:
+  enabled: false
+InstanceVariableAssumption:
+  enabled: false
+IrresponsibleModule:
+  enabled: false
+TooManyStatements:
+  max_statements: 15
+UtilityFunction:
+  enabled: false
