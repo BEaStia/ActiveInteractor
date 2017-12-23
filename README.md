@@ -22,7 +22,39 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This gem has some instances that can help you with your work:
+1) Immutable valueObject
+2) Operation with validations of input parameters and context
+  ```ruby
+   class ExampleOperation < ActiveInteractor::Operation
+  
+      validate :id, :custom_validation # <- function name for validation
+      validate :id, 'ExampleValidation' # <- class name, calls `validate` method
+  
+      def custom_validation(*args)
+        object = args.first
+        object.context.id == nil
+      end
+      
+      def before_call(*args) # <- this method is executed before exec
+        print(args)
+      end
+  
+      def exec(args = {}) # <- method executed on `call` of this class 
+        context.id = args[:id]
+        context.new_id = 2
+        context
+      end
+      
+      def after_call(*args) # <- this method is executed after exec
+        print(context.success?)
+      end
+    end
+  ```
+  
+#TODO:
+1) move validations to external package
+2) implement chain of operations pattern  
 
 ## Development
 

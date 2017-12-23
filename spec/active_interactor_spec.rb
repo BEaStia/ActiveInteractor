@@ -3,7 +3,7 @@ RSpec.describe ActiveInteractor do
     expect(ActiveInteractor::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "loads all objects" do
+    expect(ActiveInteractor::constants).to include(:Entity, :VERSION, :Operation, :ValueObject)
   end
 end
